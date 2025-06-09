@@ -2,15 +2,14 @@
 
 ## 📌 Descrição Geral
 
-Este projeto é uma aplicação web completa (front-end e back-end) com foco em **interatividade aberta entre usuários**, promovendo conexões, compartilhamento de conteúdo, discussões em grupo e comunicação aberta.  
-O sistema **não possui perfis privados**, incentivando o acesso livre ao conteúdo e a descoberta de novas conexões por afinidades e interesses.
+Este projeto é uma aplicação web full-stack de rede social, desenvolvida com o objetivo de aprimorar minhas habilidades em desenvolvimento de software. A proposta é criar uma plataforma interativa onde os usuários possam se conectar, compartilhar conteúdo e participar de discussões em grupo. Diferentemente de redes sociais tradicionais, esta aplicação não possui perfis privados, promovendo um ambiente de acesso livre ao conteúdo e incentivando a descoberta de novas conexões por afinidades e interesses.
 
 Tecnologias obrigatórias:
 - **Front-end:** React.js
 - **Back-end:** Node.js
 - **Banco de Dados:** MySQL
 
-É permitido o uso de quaisquer bibliotecas adicionais para apoiar o desenvolvimento.
+Além das tecnologias principais, foram utilizadas bibliotecas adicionais para apoiar o desenvolvimento e melhorar a experiência do usuário
 
 ---
 
