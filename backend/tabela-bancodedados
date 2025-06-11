@@ -3,3 +3,8 @@ CREATE TABLE groups (
   name VARCHAR(100) NOT NULL,
   description TEXT
 );
+
+
+
+
+(detalhe, rode a api no httpp://localhost:3001)
