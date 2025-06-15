@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Cadastro.css';
+import '../../global.css'
 
 function Cadastro() {
   const [form, setForm] = useState({nome: '',email: '',senha: '',dataNascimento: ''});
@@ -14,7 +14,7 @@ function Cadastro() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3001/cadastro', {
+      const response = await fetch("http://localhost:3001/cadastro", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
@@ -32,7 +32,7 @@ function Cadastro() {
   };
 
   return (
-    <div className="cadastro-container">
+    <section className="cadastro-container">
       <form className="cadastro-form" onSubmit={handleSubmit}>
         <input className="cadastro-input" name="nome" placeholder="Nome" onChange={handleChange} required/>
         <input className="cadastro-input" type="email" name="email" placeholder="Email" onChange={handleChange} required/>
@@ -42,7 +42,10 @@ function Cadastro() {
 
         <button type="button" className="cadastro-link" onClick={() => navigate('/login')}>Já tem conta? Faça login</button>
       </form>
-    </div>
+      <div>
+        
+      </div>
+    </section>
   );
 }
 
