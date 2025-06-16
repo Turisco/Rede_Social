@@ -35,7 +35,7 @@ CREATE TABLE `comment_reactions` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `comment_reactions_ibfk_1` FOREIGN KEY (`comment_id`) REFERENCES `comments` (`id`),
   CONSTRAINT `comment_reactions_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `comment_reactions` (
 
 LOCK TABLES `comment_reactions` WRITE;
 /*!40000 ALTER TABLE `comment_reactions` DISABLE KEYS */;
-INSERT INTO `comment_reactions` VALUES (5,5,4,'like','2025-06-15 11:16:53'),(6,5,1,'like','2025-06-15 11:17:23'),(7,6,1,'like','2025-06-15 11:33:50');
+INSERT INTO `comment_reactions` VALUES (10,8,13,'like','2025-06-16 03:28:27'),(11,8,14,'dislike','2025-06-16 03:33:37'),(12,9,16,'like','2025-06-16 03:40:31'),(13,8,16,'like','2025-06-16 03:40:41'),(14,10,16,'like','2025-06-16 03:40:53'),(15,11,16,'like','2025-06-16 03:41:14');
 /*!40000 ALTER TABLE `comment_reactions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +65,7 @@ CREATE TABLE `comments` (
   `dislikes` int DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,7 +74,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (5,7,4,'Print bonita','2025-06-15 11:16:51',2,0),(6,7,1,'Nota 10 a imagem meu querido','2025-06-15 11:33:46',1,0);
+INSERT INTO `comments` VALUES (8,9,13,'Amem meu irmao ','2025-06-16 03:28:26',2,1),(9,11,16,'Muito bom esse documentario','2025-06-16 03:40:30',1,0),(10,9,16,'Bom dia pra vcs','2025-06-16 03:40:50',1,0),(11,10,16,'Já estou lá','2025-06-16 03:41:13',1,0);
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,7 +95,7 @@ CREATE TABLE `grupos` (
   UNIQUE KEY `nome` (`nome`),
   KEY `fk_grupos_admin` (`administrador_id`),
   CONSTRAINT `fk_grupos_admin` FOREIGN KEY (`administrador_id`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,7 +104,7 @@ CREATE TABLE `grupos` (
 
 LOCK TABLES `grupos` WRITE;
 /*!40000 ALTER TABLE `grupos` DISABLE KEYS */;
-INSERT INTO `grupos` VALUES (12,'Grupo teste','grupo de teste','2025-06-14 21:28:25',7),(13,'testinho','testinho','2025-06-14 22:14:59',9),(14,'Grupo do Fabiano','Grupo legal','2025-06-15 07:55:27',4);
+INSERT INTO `grupos` VALUES (15,'Os crias da computacao','Só pra quem não sabe programar','2025-06-16 00:24:33',12),(16,'Grupo das meninas','Não pode OVO no grupo','2025-06-16 00:31:55',14);
 /*!40000 ALTER TABLE `grupos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -122,7 +122,7 @@ CREATE TABLE `mensagens` (
   `mensagem` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `hora` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,7 +131,7 @@ CREATE TABLE `mensagens` (
 
 LOCK TABLES `mensagens` WRITE;
 /*!40000 ALTER TABLE `mensagens` DISABLE KEYS */;
-INSERT INTO `mensagens` VALUES (1,12,'Marcos','teste','2025-06-15 07:49:54'),(2,12,'FabianoT','adasdsa','2025-06-15 07:55:59'),(3,12,'FabianoT','bom dia grupo','2025-06-15 08:19:47'),(4,12,'Joao','Opa, bom dia','2025-06-15 08:20:35'),(5,12,'Navi','Certo','2025-06-15 12:09:28');
+INSERT INTO `mensagens` VALUES (6,12,'Marcos','Bom dia minha galera','2025-06-16 00:24:52'),(7,12,'Fabiano','Bom dia Marcos','2025-06-16 00:29:05');
 /*!40000 ALTER TABLE `mensagens` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,7 +153,7 @@ CREATE TABLE `post_reactions` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `post_reactions_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
   CONSTRAINT `post_reactions_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,7 +162,7 @@ CREATE TABLE `post_reactions` (
 
 LOCK TABLES `post_reactions` WRITE;
 /*!40000 ALTER TABLE `post_reactions` DISABLE KEYS */;
-INSERT INTO `post_reactions` VALUES (5,7,4,'like','2025-06-15 11:16:39');
+INSERT INTO `post_reactions` VALUES (8,9,12,'like','2025-06-16 03:27:04'),(9,9,13,'like','2025-06-16 03:28:20'),(10,9,14,'dislike','2025-06-16 03:33:36'),(11,10,14,'like','2025-06-16 03:35:15'),(12,11,15,'like','2025-06-16 03:38:22'),(13,11,16,'like','2025-06-16 03:40:14'),(14,9,16,'like','2025-06-16 03:40:54'),(15,10,16,'like','2025-06-16 03:40:59');
 /*!40000 ALTER TABLE `post_reactions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,7 +185,7 @@ CREATE TABLE `posts` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   CONSTRAINT `posts_chk_1` CHECK ((`content_type` in (_utf8mb4'text',_utf8mb4'image',_utf8mb4'video')))
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,7 +194,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (7,4,'image','Bom dia','1749986190125-WhatsApp-Image-2024-04-11-at-16.08.52.jpeg','2025-06-15 11:16:30',1,0),(8,10,'text','Meu nome e Kauan',NULL,'2025-06-15 11:26:27',0,0);
+INSERT INTO `posts` VALUES (9,12,'text','? Mateus 24 – Os Sinais do Fim\r\n\r\n\"Portanto, vigiem, porque vocês não sabem em que dia virá o seu Senhor.\"\r\n– Mateus 24:42',NULL,'2025-06-16 03:27:00',3,1),(10,14,'image','Comecar o dia bem','1750044913754-WhatsApp-Image-2024-04-11-at-16.08.52.jpeg','2025-06-16 03:35:13',2,0),(11,15,'image','O filme Titanic conta a história do luxuoso navio que afundou em 1912 após colidir com um iceberg. A trama acompanha o romance entre Jack, um artista pobre, e Rose, uma jovem da alta sociedade, que se conhecem durante a viagem. Apesar das diferenças sociais, os dois vivem um intenso amor. Quando o navio começa a afundar, eles enfrentam juntos o desespero e o caos. O filme mistura drama, romance e fatos históricos, emocionando gerações.','1750045100390-images.jpg','2025-06-16 03:38:20',2,0);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -222,7 +222,6 @@ CREATE TABLE `replies` (
 
 LOCK TABLES `replies` WRITE;
 /*!40000 ALTER TABLE `replies` DISABLE KEYS */;
-INSERT INTO `replies` VALUES (6,5,1,'Tambem acho','2025-06-15 11:17:29'),(7,5,4,'Bom dia chat','2025-06-15 11:18:36');
 /*!40000 ALTER TABLE `replies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,10 +238,11 @@ CREATE TABLE `usuarios` (
   `email` varchar(225) COLLATE utf8mb4_unicode_ci NOT NULL,
   `senha` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `data_nascimento` date NOT NULL,
+  `foto_perfil` longtext COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `nome_UNIQUE` (`nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -251,7 +251,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Marcos','marcos@gmail.com','12345','2000-01-01'),(2,'MarcosT','marcosT@gmail.com','12345','2005-08-09'),(3,'Fabiano','Fabiano@gmail.com','12345','1997-01-05'),(4,'FabianoT','FabianoT@gmail.com','12345','2025-06-11'),(5,'FabianoT2','FabianoT2@gmail.com','12345','2025-06-12'),(7,'Marcos2','marcos2@gmail.com','12345','2025-06-05'),(8,'Joao','Joao@gmail.com','12345','2025-06-10'),(9,'Joao2','Joao2@gmail.com','12345','2025-07-01'),(10,'Kauan de Oliveira','Kauan12@gmail.com','12345','2004-05-12'),(11,'Navi','Navi@gmail.com','12345','2010-01-03');
+INSERT INTO `usuarios` VALUES (12,'Marcos','marcos@gmail.com','12345','2005-08-09',NULL),(13,'Fabiano','fabiano@gmail.com','12345','1997-01-05',NULL),(14,'Larissa','larissa@gmail.com','12345','2005-12-05',NULL),(15,'Joao','joao@gmail.com','12345','2000-01-01',NULL),(16,'Julia','julia@gmail.com','12345','2003-07-21',NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,7 +278,7 @@ CREATE TABLE `usuarios_grupos` (
 
 LOCK TABLES `usuarios_grupos` WRITE;
 /*!40000 ALTER TABLE `usuarios_grupos` DISABLE KEYS */;
-INSERT INTO `usuarios_grupos` VALUES (1,12),(8,12),(10,12),(11,12);
+INSERT INTO `usuarios_grupos` VALUES (13,15),(15,15),(16,16);
 /*!40000 ALTER TABLE `usuarios_grupos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -291,4 +291,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-15 12:47:48
+-- Dump completed on 2025-06-16  0:49:29
