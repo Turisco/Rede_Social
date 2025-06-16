@@ -889,3 +889,22 @@ input[type="file"]:focus {
 .button-postagem:hover {
   background: linear-gradient(135deg, #1e40af, #2563eb);
 }
+
+.foto-perfil-wrapper {
+  cursor: pointer;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e5e5e5;
+}
+
+.foto-perfil {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+

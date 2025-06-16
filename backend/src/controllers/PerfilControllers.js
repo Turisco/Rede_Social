@@ -1,9 +1,14 @@
 const db = require('../db');
+const fs = require('fs');
 
 exports.getPerfilUsuario = (req, res) => {
   const { id } = req.params;
 
-  const sql = 'SELECT id, nome, email, data_nascimento FROM usuarios WHERE id = ?';
+  const sql = `
+    SELECT id, nome, email, data_nascimento, foto_perfil
+    FROM usuarios
+    WHERE id = ?
+  `;
 
   db.query(sql, [id], (err, results) => {
     if (err) return res.status(500).json({ erro: err.message });
@@ -31,5 +36,30 @@ exports.getGruposDoUsuario = (req, res) => {
     if (err) return res.status(500).json({ erro: err.message });
 
     res.status(200).json(results);
+  });
+};
+
+exports.atualizarFotoPerfil = (req, res) => {
+  const { id } = req.params;
+  const { fotoPerfil } = req.body;
+
+  if (!fotoPerfil) {
+    return res.status(400).json({ erro: "Foto de perfil não enviada." });
+  }
+
+  const sql = `
+    UPDATE usuarios
+    SET foto_perfil = ?
+    WHERE id = ?
+  `;
+
+  db.query(sql, [fotoPerfil, id], (err, result) => {
+    if (err) return res.status(500).json({ erro: err.message });
+
+    if (result.affectedRows > 0) {
+      res.status(200).json({ mensagem: "Foto de perfil atualizada com sucesso." });
+    } else {
+      res.status(404).json({ erro: "Usuário não encontrado." });
+    }
   });
 };

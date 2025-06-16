@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, CircleUserRound } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import "../../global.css";
@@ -7,6 +7,8 @@ export default function Perfil() {
   const [usuario, setUsuario] = useState(null);
   const [gruposUsuario, setGruposUsuario] = useState([]);
   const [loadingGrupos, setLoadingGrupos] = useState(true);
+  const [fotoPerfil, setFotoPerfil] = useState(null);
+  const inputFileRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,6 +16,7 @@ export default function Perfil() {
     if (dadosUsuario) {
       const user = JSON.parse(dadosUsuario);
       setUsuario(user);
+      if (user.fotoPerfil) setFotoPerfil(user.fotoPerfil);
 
       fetch(`http://localhost:3001/perfil/grupos/${user.id}`)
         .then(res => res.json())
@@ -27,6 +30,41 @@ export default function Perfil() {
         });
     }
   }, []);
+
+  const handleFotoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64Image = reader.result;
+        setFotoPerfil(base64Image);
+
+        const dadosAtualizados = { ...usuario, fotoPerfil: base64Image };
+        localStorage.setItem("usuario", JSON.stringify(dadosAtualizados));
+        setUsuario(dadosAtualizados);
+
+        fetch(`http://localhost:3001/perfil/foto/${usuario.id}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ fotoPerfil: base64Image }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("Foto de perfil atualizada no backend:", data);
+          })
+          .catch((err) => {
+            console.error("Erro ao atualizar foto no backend:", err);
+          });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleFotoClick = () => {
+    inputFileRef.current?.click();
+  };
 
   const toggleRouterBack = () => navigate("/home");
   const toggleRouterCreateGroup = () => navigate("/criarGrupo");
@@ -43,7 +81,25 @@ export default function Perfil() {
         <ChevronLeft size={45} cursor="pointer" onClick={toggleRouterBack} />
       </div>
       <div className="section-perfil-group">
-        <CircleUserRound size={130} color="gray" />
+        <div className="foto-perfil-wrapper" onClick={handleFotoClick}>
+          {fotoPerfil ? (
+            <img
+              src={fotoPerfil}
+              alt="Foto de perfil"
+              className="foto-perfil"
+            />
+          ) : (
+            <CircleUserRound size={130} color="gray" />
+          )}
+        </div>
+        <input
+          type="file"
+          accept="image/*"
+          style={{ display: "none" }}
+          ref={inputFileRef}
+          onChange={handleFotoChange}
+        />
+
         <div className="section-perfil-data">
           <h3>Nome de usuário</h3>
           <h4>{usuario.nome}</h4>
@@ -72,13 +128,21 @@ export default function Perfil() {
             }
             {jaEstaEmGrupo ? (
               <div className="box-name-group">
-            <h3 className="group-title">Grupo</h3>
+                <h3 className="group-title">Grupo</h3>
                 {gruposUsuario.map((grupo) => (
-                  <div className="box-group">
-                    <p key={grupo.id} className="name-group">
-                    Nome do grupo:  {grupo.nome} {grupo.administrador_id === usuario.id ? "(Administrador)" : "(Membro)"}
+                  <div className="box-group" key={grupo.id}>
+                    <p className="name-group">
+                      Nome do grupo: {grupo.nome}{" "}
+                      {grupo.administrador_id === usuario.id
+                        ? "(Administrador)"
+                        : "(Membro)"}
                     </p>
-                    <button className="button-postagem" onClick={() => navigate('/chatGroup')}>Chat do grupo</button>
+                    <button
+                      className="button-postagem"
+                      onClick={() => navigate("/chatGroup")}
+                    >
+                      Chat do grupo
+                    </button>
                   </div>
                 ))}
               </div>
