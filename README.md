@@ -60,6 +60,6 @@ Usuários podem criar ou participar de grupos temáticos com:
   - Membro
   - Administrador
 
-#### ⚖️ Regras dos Grupos
+#### Regras dos Grupos
 - **Apenas administradores** podem apagar mensagens de outros membros
 - Grupos permitem **discussões públicas** entre seus membros
