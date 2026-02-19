@@ -1,6 +1,6 @@
 # Projeto Final - Rede Social Interativa
 
-## 📌 Descrição Geral
+## Descrição Geral
 
 Este projeto é uma aplicação web full-stack de rede social, desenvolvida com o objetivo de aprimorar minhas habilidades em desenvolvimento de software. A proposta é criar uma plataforma interativa onde os usuários possam se conectar, compartilhar conteúdo e participar de discussões em grupo. Diferentemente de redes sociais tradicionais, esta aplicação não possui perfis privados, promovendo um ambiente de acesso livre ao conteúdo e incentivando a descoberta de novas conexões por afinidades e interesses.
 
@@ -13,7 +13,7 @@ Além das tecnologias principais, foram utilizadas bibliotecas adicionais para a
 
 ---
 
-## 🧑‍💼 Funcionalidades Principais
+## Funcionalidades Principais
 
 ### 1. Cadastro de Usuários
 Cada usuário poderá se registrar fornecendo:
@@ -22,18 +22,18 @@ Cada usuário poderá se registrar fornecendo:
 - Data de nascimento
 - Foto de perfil
 
-#### 🔐 Autenticação
+#### Autenticação
 - Login seguro com **e-mail e senha**
 - Senhas devem ser **armazenadas de forma segura (criptografadas)**
 - Os usuários podem **se conectar entre si** por meio de solicitações e aceitações de conexão
 
-⚠️ **Não há perfis privados**: qualquer usuário pode visualizar postagens, perfis e interações de outros usuários, mesmo sem conexão.
+**Não há perfis privados**: qualquer usuário pode visualizar postagens, perfis e interações de outros usuários, mesmo sem conexão.
 
 ---
 
 ### 2. Postagens e Interações
 
-#### 📢 Postagens
+#### Postagens
 Usuários podem criar postagens públicas com:
 - Data de criação
 - Tipo de conteúdo:
@@ -42,7 +42,7 @@ Usuários podem criar postagens públicas com:
   - Vídeo (com ou sem texto)
 - Conteúdo
 
-#### 🤝 Interações Permitidas
+#### Interações Permitidas
 - Avaliações positivas ou negativas nas postagens
 - Comentários em postagens
 - Respostas a comentários (comentários em comentários)
